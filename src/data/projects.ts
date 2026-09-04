@@ -1,6 +1,6 @@
 import type { Project } from "../types/project";
 import ARProductImage from "../assets/images/SpatiaStudio.png";
-import BrandCampaignImage from "../assets/images/Immersive Brand Campaign.png";
+import BrandCampaignImage from "../assets/images/immersive brand.png";
 import ProductViewerImage from "../assets/images/Digital Product Viewer.png";
 import BusinessPlatformImage from "../assets/images/Business Management Platform.png";
 import SwiftWashImage from "../assets/images/SwiftWash Dashboard.png";
@@ -41,6 +41,7 @@ export const projects: Project[] = [
     services: ["Creative Development", "Interaction Design"],
     technologies: ["React", "GSAP", "WebGL"],
     featured: true,
+    liveUrl: "https://immersive-brand-campaign.vercel.app/",
   },
 
   {
