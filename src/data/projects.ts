@@ -1,5 +1,5 @@
 import type { Project } from "../types/project";
-import ARProductImage from "../assets/images/AR Product Experience.png";
+import ARProductImage from "../assets/images/SpatiaStudio.png";
 import BrandCampaignImage from "../assets/images/Immersive Brand Campaign.png";
 import ProductViewerImage from "../assets/images/Digital Product Viewer.png";
 import BusinessPlatformImage from "../assets/images/Business Management Platform.png";
@@ -22,6 +22,8 @@ export const projects: Project[] = [
     services: ["AR Development", "UX Design", "3D Visualization"],
     technologies: ["WebAR", "Three.js", "React"],
     featured: true,
+    liveUrl: "https://web-ar-product-delta.vercel.app/",
+
   },
 
   {
