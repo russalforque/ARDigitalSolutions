@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Container from "../components/common/Container";
 import { services } from "../data/services";
-import CTASection from "../components/home/CTASection";
 
 export default function ServiceDetails() {
   const { id } = useParams<{ id: string }>();
@@ -80,36 +79,19 @@ export default function ServiceDetails() {
         <Container>
           <div className="max-w-3xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-6 sm:mb-8">
-              Why choose this service?
+              What's included
             </h2>
 
-            <div className="space-y-6 sm:space-y-8 text-neutral-400">
-              <p className="text-sm sm:text-base md:text-lg leading-6 sm:leading-7">
-                Our {service.title.toLowerCase()} service combines cutting-edge technology with practical business understanding. We focus on delivering solutions that not only meet your current needs but also scale with your business growth.
-              </p>
-
-              <p className="text-sm sm:text-base md:text-lg leading-6 sm:leading-7">
-                Each of our features is carefully selected to provide maximum value:
-              </p>
-
-              <ul className="space-y-3 sm:space-y-4">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 sm:gap-4">
-                    <span className="mt-1 shrink-0 text-white">•</span>
-                    <span className="text-sm sm:text-base md:text-lg leading-6 sm:leading-7">
-                      <strong className="text-white">{feature}</strong> - Designed to solve real business challenges and improve operational efficiency.
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="text-sm sm:text-base md:text-lg leading-6 sm:leading-7">
-                We're committed to delivering excellence in every project, ensuring your investment creates lasting value for your organization.
-              </p>
-            </div>
+            <ul className="divide-y divide-white/10 border-t border-white/10">
+              {service.features.map((feature) => (
+                <li key={feature} className="py-5 sm:py-6 text-base sm:text-lg text-neutral-300">
+                  {feature}
+                </li>
+              ))}
+            </ul>
 
             <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-white/10">
-              <Link 
+              <Link
                 to="/contact"
                 className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-white text-black font-medium hover:bg-neutral-200 transition-colors"
               >
@@ -119,8 +101,6 @@ export default function ServiceDetails() {
           </div>
         </Container>
       </section>
-
-      <CTASection />
     </>
   );
 }

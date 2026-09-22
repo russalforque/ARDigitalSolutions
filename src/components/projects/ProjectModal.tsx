@@ -1,4 +1,5 @@
 import { ArrowUpRight, X } from "lucide-react";
+import { useEffect } from "react";
 import type { Project } from "../../types/project";
 import Badge from "../common/Badge";
 
@@ -11,12 +12,32 @@ export default function ProjectModal({
   project,
   onClose,
 }: ProjectModalProps) {
+  useEffect(() => {
+    if (!project) return;
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [project, onClose]);
+
   if (!project) return null;
 
   return (
     <div
       className="fixed inset-0 z-80 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={project.title}
     >
       <div
         className="max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-3xl border border-white/10 bg-neutral-950"
@@ -31,7 +52,8 @@ export default function ProjectModal({
 
           <button
             onClick={onClose}
-            className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 backdrop-blur"
+            aria-label="Close"
+            className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 backdrop-blur transition-colors hover:bg-black/90"
           >
             <X size={18} />
           </button>
@@ -104,10 +126,9 @@ export default function ProjectModal({
                 <ArrowUpRight size={15} />
               </a>
             ) : (
-              <button className="flex items-center gap-2 border-b border-white/20 pb-2 pt-2">
-                View project
-                <ArrowUpRight size={15} />
-              </button>
+              <p className="pt-2 text-sm text-neutral-600">
+                Project not publicly available
+              </p>
             )}
           </div>
         </div>

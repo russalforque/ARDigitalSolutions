@@ -14,7 +14,16 @@ export default function ProjectCard({
   return (
     <article
       onClick={onClick}
-      className="group cursor-pointer opacity-0 translate-y-2 transition-all duration-700 ease-out animate-[fadeInUp_0.7s_ease-out_forwards]"
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onClick?.();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${project.title}`}
+      className="group cursor-pointer opacity-0 translate-y-2 transition-all duration-700 ease-out animate-[fadeInUp_0.7s_ease-out_forwards] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg"
       style={{
         animationDelay: 'var(--delay, 0ms)'
       }}

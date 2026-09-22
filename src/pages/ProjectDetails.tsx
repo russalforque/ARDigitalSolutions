@@ -32,11 +32,11 @@ export default function ProjectDetails() {
   }
 
   return (
-    <section className="pt-32 pb-24 lg:pt-40 lg:pb-32">
+    <section className="pt-10 sm:pt-16 md:pt-28 pb-16 sm:pb-20 lg:pt-52 lg:pb-32">
       <Container>
         <Link
           to="/projects"
-          className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white"
+          className="inline-flex items-center gap-2 text-sm text-neutral-500 transition-colors hover:text-white"
         >
           <ArrowLeft size={15} />
           All projects
@@ -106,13 +106,21 @@ export default function ProjectDetails() {
               <p className="mt-2">{project.year}</p>
             </div>
 
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 border-b border-white/20 pb-2 text-sm"
-            >
-              Visit project
-              <ArrowUpRight size={15} />
-            </a>
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 border-b border-white/20 pb-2 text-sm transition-colors hover:border-white/50 hover:text-neutral-300"
+              >
+                Visit project
+                <ArrowUpRight size={15} />
+              </a>
+            ) : (
+              <p className="text-sm text-neutral-600">
+                Project not publicly available
+              </p>
+            )}
           </div>
         </div>
       </Container>

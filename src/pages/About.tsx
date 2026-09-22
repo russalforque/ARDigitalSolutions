@@ -62,15 +62,12 @@ export default function About() {
       {/* Focus Areas Section */}
       <section className="border-t border-white/10 py-16 sm:py-20 lg:py-32">
         <Container>
-          <div className="grid gap-12 lg:gap-20 mb-12 lg:mb-16">
-            <div className="opacity-0 translate-y-2 transition-all duration-700 ease-out animate-[fadeInUp_0.7s_ease-out_forwards]">
-              <p className="text-xs font-medium uppercase tracking-[0.25em] text-neutral-500 transition-colors duration-300">
-                Our Focus
-              </p>
-            </div>
-          </div>
+          <SectionTitle
+            eyebrow="Our Focus"
+            title="Where we specialize."
+          />
 
-          <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-1 max-w-2xl" ref={focusRef}>
+          <div className="mt-12 sm:mt-16 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-1 max-w-2xl" ref={focusRef}>
             {focusAreas.map((area) => (
               <div 
                 key={area} 
@@ -96,13 +93,12 @@ export default function About() {
       {/* Approach Section */}
       <section className="border-t border-white/10 py-16 sm:py-20 lg:py-32">
         <Container>
-          <div className="grid gap-12 lg:gap-20">
-            <div className="opacity-0 translate-y-2 transition-all duration-700 ease-out animate-[fadeInUp_0.7s_ease-out_forwards]">
-              <p className="text-xs font-medium uppercase tracking-[0.25em] text-neutral-500 transition-colors duration-300">
-                Our Approach
-              </p>
-            </div>
+          <SectionTitle
+            eyebrow="Our Approach"
+            title="How we build."
+          />
 
+          <div className="mt-12 sm:mt-16">
             <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
               {[
                 "We believe great digital products don't require unnecessary complexity. Our approach is rooted in clean design, practical development, and a deep understanding of business needs.",

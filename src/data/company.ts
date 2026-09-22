@@ -3,11 +3,11 @@ export const company = {
   shortName: "AR",
   tagline: "Modern Websites. Custom Systems. Real Results.",
   description: "We build practical digital solutions, websites, POS systems, and custom business systems, that help small businesses move away from manual work.",
-  email: "russavenido@gmail.com",
+  email: "ardigitalsolutions7@gmail.com",
   phone: "+63 927 352 4231",
   location: "Cebu City, Philippines",
   social: {
-    instagram: "https://www.instagram.com/ardi.gitalsolutions?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
+    instagram: "https://www.instagram.com/ardi.gitalsolutions/",
     facebook: "https://www.facebook.com/profile.php?id=61594149861228",
     linkedin: "https://www.linkedin.com/in/rhazel-alforoque-000643295/",
     github: "https://github.com/russalforque",
