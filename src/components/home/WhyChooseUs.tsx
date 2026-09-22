@@ -99,16 +99,16 @@ export default function WhyChooseUs() {
             </p>
 
             <h2 className="mt-4 sm:mt-6 text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-0.04em] leading-tight transition-colors duration-300">
-              Technology should feel simple.
+              Built around how you work.
             </h2>
           </div>
 
           {/* Right Column */}
           <div className="opacity-0 translate-y-2 transition-all duration-700 ease-out animate-[fadeInUp_0.7s_ease-out_forwards]" style={{ animationDelay: '100ms' }}>
             <p className="text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-neutral-400 transition-colors duration-300 ease-out">
-              We believe great digital products don't need unnecessary
-              complexity. We focus on clarity, performance, and experiences
-              that feel natural to use.
+              We build practical solutions around your workflow, not the
+              other way around, and stay flexible to your requirements and
+              budget, with direct communication throughout.
             </p>
 
             {/* Stats Grid */}

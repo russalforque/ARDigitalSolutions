@@ -1,8 +1,8 @@
 export const company = {
   name: "AR Digital Solutions",
   shortName: "AR",
-  tagline: "Digital experiences beyond the screen.",
-  description: "We design and build immersive digital experiences that help businesses communicate, engage, and grow.",
+  tagline: "Modern Websites. Custom Systems. Real Results.",
+  description: "We build practical digital solutions, websites, POS systems, and custom business systems, that help small businesses move away from manual work.",
   email: "russavenido@gmail.com",
   phone: "+63 927 352 4231",
   location: "Cebu City, Philippines",

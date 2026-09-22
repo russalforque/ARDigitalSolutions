@@ -2,59 +2,59 @@ import type { Service } from "../types/service";
 
 export const services: Service[] = [
   {
-    id: "ar-development",
-    number: "01",
-    title: "Augmented Reality",
-    description:
-      "Interactive AR experiences that connect physical environments with digital content.",
-    features: [
-      "WebAR Experiences",
-      "Product Visualization",
-      "Interactive Campaigns",
-      "AR Try-On Experiences",
-    ],
-    icon: "scan",
-  },
-  {
     id: "web-development",
-    number: "02",
-    title: "Web Development",
+    number: "01",
+    title: "Websites",
     description:
-      "High-performance websites and web applications designed around your business goals.",
+      "Fast, professional business websites that build trust and bring in customers.",
     features: [
-      "Corporate Websites",
-      "Web Applications",
+      "Business Websites",
       "Landing Pages",
-      "Interactive Websites",
+      "E-Commerce",
+      "Website Redesigns",
     ],
     icon: "code",
   },
   {
-    id: "ui-ux",
-    number: "03",
-    title: "UI / UX Design",
+    id: "pos-systems",
+    number: "02",
+    title: "POS Systems",
     description:
-      "Clean, purposeful interfaces designed to make complex products feel simple.",
+      "Point-of-sale systems that handle sales, inventory, and reporting for retail and service businesses.",
     features: [
-      "Product Design",
-      "UX Research",
-      "Design Systems",
-      "Prototyping",
+      "Sales & Checkout",
+      "Inventory Management",
+      "Reports & Analytics",
+      "Offline Support",
+    ],
+    icon: "cpu",
+  },
+  {
+    id: "digital-solutions",
+    number: "03",
+    title: "Custom Business Systems",
+    description:
+      "Booking, management, and automation systems built around how your business already works.",
+    features: [
+      "Booking & Scheduling",
+      "Management Systems",
+      "Workflow Automation",
+      "Business Dashboards",
     ],
     icon: "layers",
   },
   {
-    id: "digital-solutions",
+    id: "ui-ux",
     number: "04",
-    title: "Digital Solutions",
+    title: "Digital Experiences",
     description:
-      "Custom software solutions that streamline operations and solve real business problems.",
+      "Interfaces and dashboards designed to make everyday tools simple to use.",
     features: [
-      "Business Systems",
-      "Dashboards",
-      "Management Systems",
-      "Custom Applications",
+      "UI / UX Design",
+      "Product Dashboards",
+      "Interactive Interfaces",
+      "Design Systems",
     ],
-    icon: "cpu",
+    icon: "scan",
   },
 ];

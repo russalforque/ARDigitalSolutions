@@ -1,8 +1,6 @@
-import { ArrowDownRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import Container from "../common/Container";
+import Button from "../common/Button";
 import BlurText from "../transitions/BlurText";
-import TextType from "../transitions/TextType";
 
 
 export default function Hero() {
@@ -22,49 +20,47 @@ export default function Hero() {
             <div className="mb-8 flex items-center gap-3">
               <span className="h-px w-10 bg-white/40" />
 
-             
-
               <span className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-                Digital Innovation Studio
+                Cebu City, Philippines
               </span>
             </div>
 
             <h1 className="max-w-6xl text-[clamp(3.5rem,9vw,9rem)] font-medium leading-[0.88] tracking-[-0.07em]">
               <BlurText
-  text="Digital experiences "
-  delay={200}
-  animateBy="words"
-  direction="top"
-  onAnimationComplete={handleAnimationComplete}
-  className="max-w-6xl text-[clamp(3.5rem,9vw,9rem)] font-medium leading-[0.88] tracking-[-0.07em]"
-/>
-           
-           
-               <BlurText
-  text="beyond. "
-  delay={200}
-  animateBy="words"
-  direction="top"
-  onAnimationComplete={handleAnimationComplete}
-  className="text-neutral-600"
-/>
+                text="Digital systems built "
+                delay={200}
+                animateBy="words"
+                direction="top"
+                onAnimationComplete={handleAnimationComplete}
+                className="max-w-6xl text-[clamp(3.5rem,9vw,9rem)] font-medium leading-[0.88] tracking-[-0.07em]"
+              />
+
+              <BlurText
+                text="around your business."
+                delay={200}
+                animateBy="words"
+                direction="top"
+                onAnimationComplete={handleAnimationComplete}
+                className="text-neutral-600"
+              />
             </h1>
           </div>
 
           <div className="lg:pb-3">
             <p className="text-base leading-7 text-neutral-400">
-              We create immersive digital experiences, augmented reality,
-              software, and interfaces that turn ideas into meaningful
-              products.
+              Websites, POS systems, and custom software that help small
+              businesses move away from manual work.
             </p>
 
-            <Link
-              to="/projects"
-              className="mt-8 inline-flex items-center gap-3 text-sm text-white"
-            >
-              Explore our work
-              <ArrowDownRight size={17} />
-            </Link>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Button href="/contact" variant="primary">
+                Start a Project
+              </Button>
+
+              <Button href="/services" variant="secondary">
+                Explore Our Solutions
+              </Button>
+            </div>
           </div>
         </div>
 
