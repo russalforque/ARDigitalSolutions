@@ -1,0 +1,49 @@
+import voiceover from "./voiceover.json";
+
+export const FPS = 30;
+export const TRANSITION = 15;
+// Voice starts this many frames into each scene
+export const VO_LEAD = 12;
+const TAIL = 18;
+
+export type SceneId = keyof typeof voiceover;
+
+// Minimum lengths so each scene's camera moves and clicks have room to play
+const MIN_FRAMES: Record<SceneId, number> = {
+  intro: 165,
+  hero: 225,
+  services: 270,
+  sellix: 280,
+  projects: 215,
+  industries: 230,
+  process: 230,
+  outro: 150,
+};
+
+export const SCENE_IDS = Object.keys(voiceover) as SceneId[];
+
+export const sceneFrames = (id: SceneId) => {
+  const extra = id === "outro" ? 45 : 0;
+  return (
+    Math.max(
+      MIN_FRAMES[id],
+      Math.ceil(voiceover[id] * FPS) + VO_LEAD + TAIL + TRANSITION,
+    ) + extra
+  );
+};
+
+export const TOTAL_FRAMES =
+  SCENE_IDS.reduce((sum, id) => sum + sceneFrames(id), 0) -
+  TRANSITION * (SCENE_IDS.length - 1);
+
+// Frame where each scene starts in the full video (for music ducking)
+export const sceneStart = (id: SceneId) => {
+  let start = 0;
+  for (const s of SCENE_IDS) {
+    if (s === id) return start;
+    start += sceneFrames(s) - TRANSITION;
+  }
+  return start;
+};
+
+export const voDuration = (id: SceneId) => Math.ceil(voiceover[id] * FPS);
