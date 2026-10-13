@@ -42,6 +42,14 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={TEXT_TOTAL_FRAMES}
       />
       <Composition
+        id="ArdTextPromoVertical"
+        component={ArdTextPromo}
+        width={1080}
+        height={1920}
+        fps={FPS}
+        durationInFrames={TEXT_TOTAL_FRAMES}
+      />
+      <Composition
         id="ArdPromo"
         component={ArdPromo}
         width={1920}

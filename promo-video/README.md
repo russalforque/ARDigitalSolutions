@@ -2,7 +2,7 @@
 
 A 60-second 1080p marketing video for the AR Digital Solutions site, built with [Remotion](https://remotion.dev). Every page shown is the real site, captured from a production build. It has eight scenes (hook, hero, services, Sellix POS, projects, industries, process, call to action), a narrated voiceover and an original background track that ducks under the voice.
 
-There is also a 37-second **text-only motion cut** (`ArdTextPromo`): SaaS-style kinetic typography with no screenshots or voiceover, cut to the 110 BPM background track. Its scenes and beat timings are in `src/text/` (`Scenes.tsx`, with scene lengths in beats in `ArdTextPromo.tsx`).
+There is also a 37-second **text-only motion cut** (`ArdTextPromo`): SaaS-style kinetic typography with no screenshots or voiceover, cut to the 110 BPM background track. A 1080×1920 Reels/TikTok version of it is `ArdTextPromoVertical`: the same scenes restack for a tall screen and keep clear of the bottom 300px where Reels shows the caption and buttons. Its scenes and beat timings are in `src/text/` (`Scenes.tsx`, with scene lengths in beats in `ArdTextPromo.tsx`).
 
 ## Commands
 
@@ -11,6 +11,7 @@ npm i
 npm run dev                                                   # Remotion Studio preview
 npx remotion render ArdPromo out/ar-digital-solutions-promo.mp4
 npx remotion render ArdTextPromo out/ar-digital-solutions-text-motion.mp4   # text-only cut
+npx remotion render ArdTextPromoVertical out/ar-digital-solutions-reels.mp4 # 9:16 for Reels
 ```
 
 Each scene is also its own composition (under `ArdPromo-Scenes` in the Studio). Camera moves and cursor paths are keyframes in `src/scenes/*.tsx`, in the screenshot's CSS pixels (1600×1000).

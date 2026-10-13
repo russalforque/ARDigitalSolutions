@@ -1,4 +1,4 @@
-import { interpolate } from "remotion";
+import { interpolate, useVideoConfig } from "remotion";
 import { clamp, colors, ease } from "../theme";
 
 // The background track runs at 110 BPM; every cut and reveal lands on a beat
@@ -46,11 +46,13 @@ export const RollWord: React.FC<{
   children: React.ReactNode;
   style?: React.CSSProperties;
 }> = ({ frame, at, until, children, style }) => {
+  // Smaller roll on the vertical cut, where the label sits closer to the word
+  const roll = useVertical() ? 36 : 70;
   if (frame < at - 1 || (until !== undefined && frame > until + 10))
     return null;
   // Enter just after the previous word has cleared, so swaps never overlap
-  const out = until === undefined ? {} : exit(frame, until - 2, 70);
-  const inn = reveal(frame, at + 3, 70);
+  const out = until === undefined ? {} : exit(frame, until - 2, roll);
+  const inn = reveal(frame, at + 3, roll);
   return (
     <span
       style={{
@@ -134,3 +136,9 @@ export const Chip: React.FC<{
     {children}
   </span>
 );
+
+/** True for the 9:16 Reels render; scenes restack their layout for it. */
+export const useVertical = () => {
+  const { width, height } = useVideoConfig();
+  return height > width;
+};

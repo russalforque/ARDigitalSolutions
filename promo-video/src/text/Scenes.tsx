@@ -1,7 +1,15 @@
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { BrandMark, Eyebrow } from "../Brand";
 import { clamp, colors, ease, fontFamily, inOut } from "../theme";
-import { beats, Chip, exit, Marker, reveal, RollWord } from "./kit";
+import {
+  beats,
+  Chip,
+  exit,
+  Marker,
+  reveal,
+  RollWord,
+  useVertical,
+} from "./kit";
 
 const center: React.CSSProperties = {
   fontFamily,
@@ -18,6 +26,7 @@ const big: React.CSSProperties = {
 /** "Still running your business on notebooks? spreadsheets? logbooks? paper?" */
 export const Hook: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
   const words = ["notebooks?", "spreadsheets?", "logbooks?", "paper?"];
   const lead = ["Still running", "your business", "on"];
   const strike = beats(6.5);
@@ -27,8 +36,10 @@ export const Hook: React.FC = () => {
       <div
         style={{
           display: "flex",
-          gap: 22,
-          fontSize: 64,
+          flexDirection: v ? "column" : "row",
+          alignItems: "center",
+          gap: v ? 6 : 22,
+          fontSize: v ? 72 : 64,
           ...big,
           color: colors.muted,
         }}
@@ -42,9 +53,9 @@ export const Hook: React.FC = () => {
       <div
         style={{
           position: "relative",
-          height: 230,
-          width: 1500,
-          fontSize: 210,
+          height: v ? 150 : 230,
+          width: v ? 1000 : 1500,
+          fontSize: v ? 124 : 210,
           ...big,
           textAlign: "center",
         }}
@@ -94,6 +105,7 @@ export const Hook: React.FC = () => {
 /** Logo slam on the drop, then the name and location. */
 export const Brand: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
   const ring = interpolate(frame, [0, 22], [0, 1], clamp);
 
   return (
@@ -127,7 +139,7 @@ export const Brand: React.FC = () => {
           <BrandMark size={200} />
         </div>
       </div>
-      <div style={{ display: "flex", fontSize: 110, ...big }}>
+      <div style={{ display: "flex", fontSize: v ? 76 : 110, ...big }}>
         {"AR Digital Solutions".split("").map((ch, i) => (
           <span
             key={i}
@@ -149,6 +161,7 @@ export const Brand: React.FC = () => {
 /** "We build" with a slot of what they build. */
 export const Build: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
   const words = [
     "websites.",
     "POS systems.",
@@ -162,13 +175,13 @@ export const Build: React.FC = () => {
       style={{
         fontFamily,
         justifyContent: "center",
-        paddingLeft: 200,
+        paddingLeft: v ? 80 : 200,
         color: colors.text,
       }}
     >
       <div
         style={{
-          fontSize: 72,
+          fontSize: v ? 60 : 72,
           ...big,
           color: colors.dim,
           ...reveal(frame, 0, 30),
@@ -179,8 +192,8 @@ export const Build: React.FC = () => {
       <div
         style={{
           position: "relative",
-          height: 210,
-          fontSize: 196,
+          height: v ? 116 : 210,
+          fontSize: v ? 98 : 196,
           ...big,
           marginTop: 10,
         }}
@@ -221,6 +234,7 @@ export const Build: React.FC = () => {
 /** Sellix POS: four words slam into a grid, then collapse into one product. */
 export const Sellix: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
   const words = ["Sales.", "Inventory.", "Expenses.", "Reports."];
   const merge = beats(4.5);
   const dim = interpolate(frame, [merge, merge + 8], [1, 0], clamp);
@@ -230,7 +244,7 @@ export const Sellix: React.FC = () => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 760px)",
+          gridTemplateColumns: v ? "760px" : "repeat(2, 760px)",
           rowGap: 10,
           fontSize: 150,
           ...big,
@@ -264,12 +278,25 @@ export const Sellix: React.FC = () => {
         >
           All in one place:
         </div>
-        <div style={{ fontSize: 200, ...big, ...reveal(frame, merge + 4, 40) }}>
+        <div
+          style={{
+            fontSize: v ? 150 : 200,
+            ...big,
+            ...reveal(frame, merge + 4, 40),
+          }}
+        >
           <Marker frame={frame} at={merge + 8}>
             Sellix POS
           </Marker>
         </div>
-        <div style={{ display: "flex", gap: 20 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: v ? "column" : "row",
+            alignItems: "center",
+            gap: 20,
+          }}
+        >
           <Chip frame={frame} at={beats(6.5)}>
             Works offline
           </Chip>
@@ -288,6 +315,7 @@ export const Sellix: React.FC = () => {
 /** "Built for" with a fast roll through the industries. */
 export const Industries: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
   const words = [
     "retail stores.",
     "cafés.",
@@ -302,13 +330,13 @@ export const Industries: React.FC = () => {
       style={{
         fontFamily,
         justifyContent: "center",
-        paddingLeft: 200,
+        paddingLeft: v ? 80 : 200,
         color: colors.text,
       }}
     >
       <div
         style={{
-          fontSize: 72,
+          fontSize: v ? 60 : 72,
           ...big,
           color: colors.dim,
           ...reveal(frame, 0, 30),
@@ -319,8 +347,8 @@ export const Industries: React.FC = () => {
       <div
         style={{
           position: "relative",
-          height: 210,
-          fontSize: 196,
+          height: v ? 116 : 210,
+          fontSize: v ? 98 : 196,
           ...big,
           marginTop: 10,
         }}
@@ -356,10 +384,17 @@ const STATS = [
 /** Count-up stats in a row with hairline dividers. */
 export const Stats: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
 
   return (
     <AbsoluteFill style={center}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 400px)" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: v ? "repeat(2, 440px)" : "repeat(4, 400px)",
+          rowGap: v ? 90 : 0,
+        }}
+      >
         {STATS.map((s, i) => {
           const at = beats(i * 0.75);
           const n = Math.round(
@@ -373,7 +408,8 @@ export const Stats: React.FC = () => {
               key={s.label}
               style={{
                 padding: "0 44px",
-                borderLeft: i ? `1.5px solid ${colors.border}` : undefined,
+                borderLeft:
+                  i % (v ? 2 : 4) ? `1.5px solid ${colors.border}` : undefined,
                 ...reveal(frame, at, 30),
               }}
             >
@@ -409,6 +445,7 @@ export const Stats: React.FC = () => {
 /** Understand → Plan → Build → Launch, lit in turn along a progress line. */
 export const Process: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
   const steps = ["Understand", "Plan", "Build", "Launch"];
   const cue = (i: number) => beats(0.5 + i * 1.25);
   const progress = interpolate(frame, [cue(0), cue(3) + 10], [0, 1], {
@@ -424,9 +461,10 @@ export const Process: React.FC = () => {
       <div
         style={{
           display: "flex",
+          flexDirection: v ? "column" : "row",
           alignItems: "center",
-          gap: 34,
-          fontSize: 104,
+          gap: v ? 18 : 34,
+          fontSize: v ? 120 : 104,
           ...big,
         }}
       >
@@ -437,8 +475,9 @@ export const Process: React.FC = () => {
               key={s}
               style={{
                 display: "flex",
+                flexDirection: v ? "column" : "row",
                 alignItems: "center",
-                gap: 34,
+                gap: v ? 18 : 34,
                 ...reveal(frame, 2 + i * 2, 20),
               }}
             >
@@ -449,7 +488,7 @@ export const Process: React.FC = () => {
                     color: lit ? colors.text : colors.faint,
                   }}
                 >
-                  →
+                  {v ? "↓" : "→"}
                 </span>
               ) : null}
               <span
@@ -471,7 +510,7 @@ export const Process: React.FC = () => {
       </div>
       <div
         style={{
-          width: 1500,
+          width: v ? 800 : 1500,
           height: 3,
           backgroundColor: colors.border,
           position: "relative",
@@ -495,6 +534,7 @@ export const Process: React.FC = () => {
 /** The company tagline, then the call to action. */
 export const Outro: React.FC = () => {
   const frame = useCurrentFrame();
+  const v = useVertical();
   const lines = ["Modern Websites.", "Custom Systems.", "Real Results."];
   const cta = beats(5);
 
@@ -512,7 +552,7 @@ export const Outro: React.FC = () => {
             <div
               key={l}
               style={{
-                fontSize: 170,
+                fontSize: v ? 104 : 170,
                 ...big,
                 color: i < 2 ? colors.faint : colors.text,
                 ...reveal(frame, beats(i), 50),
@@ -539,21 +579,32 @@ export const Outro: React.FC = () => {
               ...reveal(frame, cta + 4, 20),
             }}
           >
-            <BrandMark size={96} />
-            <span style={{ fontSize: 56, ...big, letterSpacing: "-0.03em" }}>
+            <BrandMark size={v ? 80 : 96} />
+            <span
+              style={{
+                fontSize: v ? 46 : 56,
+                ...big,
+                letterSpacing: "-0.03em",
+              }}
+            >
               AR Digital Solutions
             </span>
           </div>
           <div
-            style={{ fontSize: 180, ...big, ...reveal(frame, cta + 10, 40) }}
+            style={{
+              fontSize: v ? 160 : 180,
+              ...big,
+              ...reveal(frame, cta + 10, 40),
+            }}
           >
             Let's talk.
           </div>
           <div
             style={{
               display: "flex",
+              flexDirection: v ? "column" : "row",
               alignItems: "center",
-              gap: 40,
+              gap: v ? 28 : 40,
               ...reveal(frame, cta + 20, 20),
             }}
           >
